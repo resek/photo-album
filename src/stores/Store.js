@@ -31,7 +31,6 @@ class Store {
             .catch(error => {
                 console.log(error);
             });
-        localStorage.setItem("userID_p_a", JSON.stringify(id));
     }
 }
 

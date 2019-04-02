@@ -3,11 +3,9 @@ import {observer, inject} from "mobx-react";
 
 class Albums extends Component {
 
-    componentDidMount() {        
-        if(localStorage.userID_p_a) {
-            const id = JSON.parse(localStorage.getItem('userID_p_a'));
-            this.props.Store.getAlbums(id);
-        }
+    componentDidMount() {
+        const id = this.props.match.params.id
+        this.props.Store.getAlbums(id);
     }
     
     render() {

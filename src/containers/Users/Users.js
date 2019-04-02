@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { observer, inject } from "mobx-react";
+import { Link } from "react-router-dom";
 
 class Users extends Component { 
 
@@ -12,10 +13,7 @@ class Users extends Component {
             return (
                 <div key={user.id}>
                     <p>{user.name} - {user.username}</p>
-                    <button onClick={() => {
-                        this.props.Store.getAlbums(user.id); 
-                        this.props.history.push("/albums")}}>See albums
-                    </button>
+                    <Link to={`/${user.id}/albums`}>See albums</Link>
                 </div>
             )    
         });

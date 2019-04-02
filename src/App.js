@@ -11,7 +11,7 @@ class App extends Component {
 
         return (
             <div className="App">
-                <Route path="/albums" component={Albums} />
+                <Route path="/:id/albums" component={Albums} />
                 <Route path="/" exact component={Users} />
             </div>
         );
