@@ -33,9 +33,9 @@ class Store {
         });       
     }
 
-    getAlbums = (id) => {        
+    getAlbums = () => {        
         this.albums = [];    
-        axios.get(`https://jsonplaceholder.typicode.com/albums?userId=${id}`)
+        axios.get(`https://jsonplaceholder.typicode.com/albums`)
             .then(response => {
                 runInAction(() => {
                     this.albums = response.data;

@@ -4,9 +4,13 @@ import { Link } from "react-router-dom";
 
 class Users extends Component { 
 
-    componentDidMount() {       
-        this.props.Store.getUsers();
-        this.props.Store.getPhotos();
+    componentDidMount() {
+        if(!this.props.Store.users.length) {
+            this.props.Store.getUsers();
+        } 
+        if(!this.props.Store.photos.length) {
+            this.props.Store.getPhotos();
+        }  
     }
 
     render() {
@@ -14,6 +18,7 @@ class Users extends Component {
         let users;
 
         if(this.props.Store.users.length && this.props.Store.photos.length) {            
+            
             users = this.props.Store.users.map(user => {
                 
                 const filteredArr = this.props.Store.photos.filter(photo => 
@@ -27,7 +32,8 @@ class Users extends Component {
                     </div>
                 )    
             });
-        } else {
+        } 
+        else {
             users = (<div>Loading...</div>)
         }       
     
