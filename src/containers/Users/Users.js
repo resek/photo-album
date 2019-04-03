@@ -6,17 +6,30 @@ class Users extends Component {
 
     componentDidMount() {       
         this.props.Store.getUsers();
+        this.props.Store.getPhotos();
     }
 
     render() {
-        const users = this.props.Store.users.map(user => {
-            return (
-                <div key={user.id}>
-                    <p>{user.name} - {user.username}</p>
-                    <Link to={`/${user.id}/albums`}>See albums</Link>
-                </div>
-            )    
-        });
+
+        let users;
+
+        if(this.props.Store.users.length && this.props.Store.photos.length) {            
+            users = this.props.Store.users.map(user => {
+                
+                const filteredArr = this.props.Store.photos.filter(photo => 
+                    photo.albumId === user.id * 10).slice(0,1);
+                
+                return (
+                    <div key={user.id}>
+                        <p>{user.name} - {user.username}</p>
+                        <img src={filteredArr[0].thumbnailUrl} alt="thumbnail" />
+                        <div><Link to={`/${user.id}/albums`}>See albums</Link></div>     
+                    </div>
+                )    
+            });
+        } else {
+            users = (<div>Loading...</div>)
+        }       
     
         return (
             <div>
