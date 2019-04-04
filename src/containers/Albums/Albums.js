@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import {observer, inject} from "mobx-react";
 import { Link } from "react-router-dom";
 import Spinner from "../../components/Spinner/Spinner";
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import classes from './Albums.module.css';
+import Button from '@material-ui/core/Button';
 
 class Albums extends Component {
 
@@ -31,13 +36,22 @@ class Albums extends Component {
                     photo.albumId === album.id).slice(0, 3);
                 
                 return (
-                    <div key={album.id}>
-                        <p>Title: {album.title}</p>
-                        <p>AlbumID: {album.id}</p>
-                        <p>UserID: {album.userId}</p>
-                        {filteredArr.map(photo => <img key={photo.id} src={photo.thumbnailUrl} alt="thumbnail" />)}
-                        <div><Link to={`/${userId}/albums/${album.id}`}>See photos</Link></div>
-                    </div>
+                    <Card className={classes.Card} key={album.id}>
+                        <CardContent className={classes.Content}>
+                            <p><b>Album title:</b> {album.title.substring(0, 38)}</p>
+                            <Button
+                                size="small" 
+                                color="primary" 
+                                variant="contained">
+                                <Link className={classes.Link}to={`/${userId}/albums/${album.id}`}>See photos</Link>
+                            </Button>                        
+                        </CardContent>
+                        
+                        {filteredArr.map(photo => 
+                        <CardMedia className={classes.CardMedia} key={photo.id} image={photo.thumbnailUrl} />)}
+                        
+                        
+                    </Card>
                 )
             });
         }  

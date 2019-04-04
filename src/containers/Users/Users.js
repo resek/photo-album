@@ -33,10 +33,10 @@ class Users extends Component {
                 return (                                          
                     <Card key={user.id} className={classes.Card}>
                         <CardContent className={classes.Content}>
-                            <p>Author: {user.name}</p>
-                            <p>Username: {user.username}</p>
+                            <p><b>Author:</b> {user.name}</p>
+                            <p><b>Username:</b> {user.username}</p>
                             <Button
-                                size="small" 
+                                size="small"
                                 color="primary" 
                                 variant="contained">
                                 <Link className={classes.Link} to={`/${user.id}/albums`}>See albums</Link>

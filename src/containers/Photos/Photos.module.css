@@ -1,0 +1,33 @@
+.Photos {
+    margin: 30px auto;
+    max-width: 660px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.Photo {
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+
+.Title {
+    width: 150px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Title p {
+    color: white;
+    font-size: 88%;
+}
+
+.Spinner {
+    grid-column: 1 / 5;
+}

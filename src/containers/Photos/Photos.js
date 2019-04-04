@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { observer, inject } from "mobx-react";
 import { Link } from "react-router-dom";
 import Spinner from "../../components/Spinner/Spinner";
+import classes from "./Photos.module.css";
 
 class Photos extends Component {
 
@@ -21,21 +22,23 @@ class Photos extends Component {
             const albumId = this.props.match.params.albumId;
             const userId = this.props.match.params.id;
             const filteredArr = this.props.Store.photos.filter(photo => 
-                photo.albumId === Number(albumId));            
+                photo.albumId === Number(albumId));
         
             photos = filteredArr.map(photo => (
-                    <div key={photo.id}>
-                        <img src={photo.thumbnailUrl} alt="thumbnail"/>
-                        <div><Link to={`/${userId}/albums/${albumId}/photo/${photo.id}`}>See photo</Link></div>
-                    </div>                
+                <Link key={photo.id} to={`/${userId}/albums/${albumId}/photo/${photo.id}`}>
+                    <div className={classes.Photo} >
+                        <img src={photo.thumbnailUrl} alt="thumbnail" />
+                        <div className={classes.Title}><p>{photo.title.substring(0,32)}</p></div>
+                    </div>
+                </Link>                
                 ))               
         } 
         else {
-            photos = (<Spinner />)
+            photos = (<div className={classes.Spinner}><Spinner /></div>)
         }
     
         return (
-            <div>
+            <div className={classes.Photos}>
                 {photos}
             </div>              
         )
