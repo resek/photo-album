@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { observer, inject } from "mobx-react";
 import { Link } from "react-router-dom";
 import Spinner from "../../components/Spinner/Spinner";
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import classes from './Users.module.css';
+import Button from '@material-ui/core/Button';
 
 class Users extends Component { 
 
@@ -18,19 +23,29 @@ class Users extends Component {
 
         let users;
 
-        if(this.props.Store.users.length && this.props.Store.photos.length) {            
+        if(this.props.Store.users.length && this.props.Store.photos.length) {
             
             users = this.props.Store.users.map(user => {
                 
                 const filteredArr = this.props.Store.photos.filter(photo => 
                     photo.albumId === user.id * 10).slice(0,1);
                 
-                return (
-                    <div key={user.id}>
-                        <p>{user.name} - {user.username}</p>
-                        <img src={filteredArr[0].thumbnailUrl} alt="thumbnail" />
-                        <div><Link to={`/${user.id}/albums`}>See albums</Link></div>     
-                    </div>
+                return (                                          
+                    <Card key={user.id} className={classes.Card}>
+                        <CardContent className={classes.Content}>
+                            <p>Author: {user.name}</p>
+                            <p>Username: {user.username}</p>
+                            <Button
+                                size="small" 
+                                color="primary" 
+                                variant="contained">
+                                <Link className={classes.Link} to={`/${user.id}/albums`}>See albums</Link>
+                            </Button>
+                        </CardContent>
+                        <CardMedia 
+                            className={classes.CardMedia} 
+                            image={filteredArr[0].thumbnailUrl}/>                        
+                    </Card>                    
                 )    
             });
         } 

@@ -6,6 +6,7 @@ import Spinner from "../../components/Spinner/Spinner";
 class Photos extends Component {
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         if(!this.props.Store.photos.length) {
             this.props.Store.getPhotos();
         }       

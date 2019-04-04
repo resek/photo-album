@@ -5,7 +5,8 @@ import Spinner from "../../components/Spinner/Spinner";
 
 class Albums extends Component {
 
-    componentDidMount() {      
+    componentDidMount() {
+        window.scrollTo(0, 0);      
         if(!this.props.Store.albums.length) {
             this.props.Store.getAlbums();
         } 
