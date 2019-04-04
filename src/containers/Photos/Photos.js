@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { observer, inject } from "mobx-react";
 import { Link } from "react-router-dom";
+import Spinner from "../../components/Spinner/Spinner";
 
 class Photos extends Component {
 
     componentDidMount() {
         if(!this.props.Store.photos.length) {
             this.props.Store.getPhotos();
-        }        
+        }       
     }
 
     render() {
@@ -29,7 +30,7 @@ class Photos extends Component {
                 ))               
         } 
         else {
-            photos = (<div>Loading...</div>)
+            photos = (<Spinner />)
         }
     
         return (

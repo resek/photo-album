@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { observer, inject } from "mobx-react";
+import Spinner from "../../components/Spinner/Spinner";
 
 class Photo extends Component {
 
@@ -23,7 +24,7 @@ class Photo extends Component {
                 <img key={photo.id} src={photo.url} alt="thumbnail"/>);
         } 
         else {
-            photo = (<div>Loading...</div>)
+            photo = (<Spinner />)
         }
     
         return (

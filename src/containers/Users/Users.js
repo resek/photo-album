@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer, inject } from "mobx-react";
 import { Link } from "react-router-dom";
+import Spinner from "../../components/Spinner/Spinner";
 
 class Users extends Component { 
 
@@ -34,7 +35,7 @@ class Users extends Component {
             });
         } 
         else {
-            users = (<div>Loading...</div>)
+            users = (<Spinner />)
         }       
     
         return (

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {observer, inject} from "mobx-react";
 import { Link } from "react-router-dom";
+import Spinner from "../../components/Spinner/Spinner";
 
 class Albums extends Component {
 
@@ -21,7 +22,7 @@ class Albums extends Component {
 
             const userId = this.props.match.params.id;
             const userAlbums = this.props.Store.albums.filter(album => 
-                album.userId === Number(userId));
+                album.userId === Number(userId));                
             
             albums = userAlbums.map(album => {                
                 
@@ -40,8 +41,8 @@ class Albums extends Component {
             });
         }  
         else {
-            albums = (<div>Loading...</div>)
-        }           
+            albums = (<Spinner />)
+        }
     
         return (
             <div>
