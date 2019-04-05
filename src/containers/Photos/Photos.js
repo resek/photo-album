@@ -25,13 +25,15 @@ class Photos extends Component {
                 photo.albumId === Number(albumId));
         
             photos = filteredArr.map(photo => (
-                <Link key={photo.id} to={`/${userId}/albums/${albumId}/photo/${photo.id}`}>
-                    <div className={classes.Photo} >
-                        <img src={photo.thumbnailUrl} alt="thumbnail" />
-                        <div className={classes.Title}><p>{photo.title.substring(0,32)}</p></div>
-                    </div>
-                </Link>                
-                ))               
+                <div key={photo.id}>                
+                    <Link  to={`/${userId}/albums/${albumId}/photo/${photo.id}`}>
+                        <div className={classes.Photo} >
+                            <img src={photo.thumbnailUrl} alt="thumbnail" />
+                            <div className={classes.Title}><p>{photo.title.substring(0,32)}</p></div>
+                        </div>
+                    </Link>
+                </div>                
+            ))               
         } 
         else {
             photos = (<div className={classes.Spinner}><Spinner /></div>)

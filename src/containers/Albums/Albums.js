@@ -6,7 +6,6 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import classes from './Albums.module.css';
-import Button from '@material-ui/core/Button';
 
 class Albums extends Component {
 
@@ -36,22 +35,20 @@ class Albums extends Component {
                     photo.albumId === album.id).slice(0, 3);
                 
                 return (
-                    <Card className={classes.Card} key={album.id}>
-                        <CardContent className={classes.Content}>
-                            <p><b>Album title:</b> {album.title.substring(0, 38)}</p>
-                            <Button
-                                size="small" 
-                                color="primary" 
-                                variant="contained">
-                                <Link className={classes.Link}to={`/${userId}/albums/${album.id}`}>See photos</Link>
-                            </Button>                        
-                        </CardContent>
-                        
-                        {filteredArr.map(photo => 
-                        <CardMedia className={classes.CardMedia} key={photo.id} image={photo.thumbnailUrl} />)}
-                        
-                        
-                    </Card>
+                    <div key={album.id} className={classes.Album}>                    
+                        <Link to={`/${userId}/albums/${album.id}`}>
+                            <Card className={classes.Card} >
+                                
+                                <CardContent className={classes.Content}>
+                                    <p><b>Album title:</b> {album.title.substring(0, 38)}</p>
+                                </CardContent>
+                                
+                                {filteredArr.map(photo => 
+                                <CardMedia className={classes.CardMedia} key={photo.id} image={photo.thumbnailUrl} />)}
+                                            
+                            </Card>
+                        </Link>
+                    </div>
                 )
             });
         }  

@@ -1,6 +1,15 @@
-.Card {
+.Album {
     margin: 30px auto;
     width: 450px;
+    max-width: 90%;
+}
+
+.Album a {
+    text-decoration: none;
+    color: #3a3a3a;
+}
+
+.Card {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(150px, auto);
@@ -15,11 +24,24 @@
     grid-column: 1 / 4;
 }
 
-.Content button {
-    margin-top: 15px;
+.Content p {
+    margin-top: 50px;
 }
 
-.Link {
-    text-decoration: none;
-    color: white;
+@media (max-width: 600px) {
+    .Album {
+        width: 300px;
+    }
+    .Card {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .Content {
+        grid-column: 1 / 3;
+    }
+    .Content p {
+        margin-top: 30px;
+    }
+    .CardMedia:last-of-type {
+        display: none;
+    }
 }

@@ -6,7 +6,6 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import classes from './Users.module.css';
-import Button from '@material-ui/core/Button';
 
 class Users extends Component { 
 
@@ -30,22 +29,20 @@ class Users extends Component {
                 const filteredArr = this.props.Store.photos.filter(photo => 
                     photo.albumId === user.id * 10).slice(0,1);
                 
-                return (                                          
-                    <Card key={user.id} className={classes.Card}>
-                        <CardContent className={classes.Content}>
-                            <p><b>Author:</b> {user.name}</p>
-                            <p><b>Username:</b> {user.username}</p>
-                            <Button
-                                size="small"
-                                color="primary" 
-                                variant="contained">
-                                <Link className={classes.Link} to={`/${user.id}/albums`}>See albums</Link>
-                            </Button>
-                        </CardContent>
-                        <CardMedia 
-                            className={classes.CardMedia} 
-                            image={filteredArr[0].thumbnailUrl}/>                        
-                    </Card>                    
+                return (
+                    <div key={user.id} className={classes.User}>                   
+                        <Link to={`/${user.id}/albums`}>
+                            <Card className={classes.Card}>
+                                <CardContent className={classes.Content}>
+                                    <p><b>Author:</b> {user.name}</p>
+                                    <p><b>Username:</b> {user.username}</p>
+                                </CardContent>
+                                <CardMedia 
+                                    className={classes.CardMedia} 
+                                    image={filteredArr[0].thumbnailUrl}/>
+                            </Card>                         
+                        </Link>
+                    </div>                    
                 )    
             });
         } 
