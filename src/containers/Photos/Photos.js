@@ -26,7 +26,7 @@ class Photos extends Component {
         
             photos = filteredArr.map(photo => (
                 <div key={photo.id}>                
-                    <Link  to={`/${userId}/albums/${albumId}/photo/${photo.id}`}>
+                    <Link to={`/${userId}/albums/${albumId}/photo/${photo.id}`}>
                         <div className={classes.Photo} >
                             <img src={photo.thumbnailUrl} alt="thumbnail" />
                             <div className={classes.Title}><p>{photo.title.substring(0,32)}</p></div>
