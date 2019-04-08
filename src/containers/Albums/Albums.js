@@ -5,6 +5,7 @@ import Spinner from "../../components/Spinner/Spinner";
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
+import Navbar from "../../components/Navbar/Navbar";
 import classes from './Albums.module.css';
 
 class Albums extends Component {
@@ -57,9 +58,10 @@ class Albums extends Component {
         }
     
         return (
-            <div>
-                {albums}
-            </div>              
+            <>
+            <Navbar />
+            {albums}
+            </>              
         )
     }    
 }

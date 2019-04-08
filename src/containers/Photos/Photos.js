@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { observer, inject } from "mobx-react";
 import { Link } from "react-router-dom";
 import Spinner from "../../components/Spinner/Spinner";
+import Navbar from "../../components/Navbar/Navbar";
 import classes from "./Photos.module.css";
 
 class Photos extends Component {
@@ -40,9 +41,12 @@ class Photos extends Component {
         }
     
         return (
+            <>
+            <Navbar />
             <div className={classes.Photos}>
                 {photos}
-            </div>              
+            </div>
+            </>             
         )
     }      
 }
