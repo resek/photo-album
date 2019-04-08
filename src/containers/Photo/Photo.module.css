@@ -28,16 +28,16 @@
 
 .Overlay p {
     color: #fff;
-    margin: 12px;
+    margin: 10px;
 }
 
 .Overlay button {
     color: white;
     background-color: transparent;
     border: 1px solid #fff;
-    margin-left: 12px;
+    margin-left: 10px;
     width: 100px;
-    height: 28px;
+    height: 25px;
     border-radius: 4px;
     cursor: pointer;
     outline: none;
@@ -46,14 +46,13 @@
 
 .Overlay button:hover {
     background-color: #fff;
-    color: black;
+    color: #3a3a3a;
 }
 
 @media (max-width: 600px) {
-    .Overlay p {
-        margin: 9px;
-    }
-    .Overlay button {
-        margin-left: 9px;
+    .Overlay div {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
     }
 }

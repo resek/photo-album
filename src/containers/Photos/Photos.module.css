@@ -43,6 +43,15 @@
     grid-column: 1 / 5;
 }
 
+.Breadcrumbs {
+    width: 320px;
+    margin: 30px auto 0 auto;
+}
+
+.Breadcrumbs a {
+    color: #3f51b5;
+}
+
 @media (max-width: 768px) {
     .Photos {
         width: 514px;

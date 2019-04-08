@@ -49,14 +49,16 @@ class Photo extends Component {
                 
                 <div onClick={this.toggleOverlay} key={photo.id} className={classes.Photo}>    
                     
-                    <img src={photo.url} alt="thumbnail"/>
+                    <img src={photo.url} alt=""/>
                     
                     {this.state.overlay ? 
                         <div className={classes.Overlay}>
                             <p>Title: {photo.title}</p>
                             <p>Album: {album[0].title}</p>
-                            <p>User: {user[0].name}</p>
-                            <Link className={classes.Link} to={`/${userId}/albums/${albumId}`}><button>All photos</button></Link>
+                            <div>
+                                <p>User: {user[0].name}</p>
+                                <Link className={classes.Link} to={`/${userId}/albums/${albumId}`}><button>See album</button></Link>
+                            </div>                            
                         </div> 
                     : null}
                     

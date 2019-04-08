@@ -23,10 +23,11 @@ class Albums extends Component {
     render() {
 
         let albums;
+        const userId = this.props.match.params.id;
 
         if(this.props.Store.albums.length && this.props.Store.photos.length) {
 
-            const userId = this.props.match.params.id;
+            
             const userAlbums = this.props.Store.albums.filter(album => 
                 album.userId === Number(userId));                
             
@@ -58,8 +59,9 @@ class Albums extends Component {
         }
     
         return (
-            <>
+            <>            
             <Navbar />
+            <div className={classes.Breadcrumbs}><Link to="/">Home</Link> / Albums user {userId}</div>
             {albums}
             </>              
         )

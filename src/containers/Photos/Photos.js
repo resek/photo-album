@@ -17,11 +17,11 @@ class Photos extends Component {
     render() {
 
         let photos;
+        const albumId = this.props.match.params.albumId;
+        const userId = this.props.match.params.id;
         
         if(this.props.Store.photos.length) {
-
-            const albumId = this.props.match.params.albumId;
-            const userId = this.props.match.params.id;
+            
             const filteredArr = this.props.Store.photos.filter(photo => 
                 photo.albumId === Number(albumId));
         
@@ -29,7 +29,7 @@ class Photos extends Component {
                 <div key={photo.id}>                
                     <Link to={`/${userId}/albums/${albumId}/photo/${photo.id}`}>
                         <div className={classes.Photo} >
-                            <img src={photo.thumbnailUrl} alt="thumbnail" />
+                            <img src={photo.thumbnailUrl} alt="" />
                             <div className={classes.Title}><p>{photo.title.substring(0,32)}</p></div>
                         </div>
                     </Link>
@@ -43,6 +43,9 @@ class Photos extends Component {
         return (
             <>
             <Navbar />
+            <div className={classes.Breadcrumbs}>
+                <Link to="/">Home</Link> / <Link to={`/${userId}/albums`}>Albums user {userId}</Link> / Photos album {albumId}
+            </div>
             <div className={classes.Photos}>
                 {photos}
             </div>
