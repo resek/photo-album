@@ -17,6 +17,7 @@
     width: 150px;
     height: 150px;
     grid-column: 3 / 4;
+    background-color: #cccccc;
 }
 
 .Content {

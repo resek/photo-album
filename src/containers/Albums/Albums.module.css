@@ -17,6 +17,12 @@
 .CardMedia {
     height: 150px;
     width: 150px;
+    background-color: #cccccc;
+}
+
+.CardMedia:nth-of-type(3),
+.CardMedia:nth-of-type(4) {
+    border-left: solid white 0.1px;
 }
 
 .Content {

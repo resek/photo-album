@@ -1,16 +1,21 @@
 .Photo {
     width: 612px;
-    height: auto;
-    max-width: 90%;
+    height: 612px;
+    max-width: 98%; 
     margin: 20px auto 0 auto;
     cursor: pointer;
     position: relative;
+    background-color: #fff;
+    border-radius: 4px;
+    background-image: url("./assets/Rolling-0.5s-70px.gif");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .Photo img {
     width: 98%;
     height: auto;
-    border: 1px solid #ddd;
+    border: 1px solid #fff;
     border-radius: 4px;
     padding: 5px;
 }
@@ -20,9 +25,8 @@
     height: 150px;
     background: rgba(0, 0, 0, 0.3);
     position: absolute;
-    bottom: 0;
-    margin-left: 6px;
-    margin-bottom: 10px;
+    bottom: 6px;
+    left: 6px;
     text-align: left;
 }
 
@@ -49,7 +53,32 @@
     color: #3a3a3a;
 }
 
+@media (max-width: 768px) {
+    .Photo {
+        width: 510px;
+        height: 510px; 
+    }
+    .Photo img {
+        padding: 4px;
+    }
+    .Overlay {
+        bottom: 5px;
+        left: 5px;
+    }
+}
+
 @media (max-width: 600px) {
+    .Photo {
+        width: 357px;
+        height: 357px; 
+    }
+    .Photo img {
+        padding: 2.5px;
+    }
+    .Overlay {
+        bottom: 3.5px;
+        left: 3.5px;
+    }
     .Overlay div {
         display: grid;
         grid-template-columns: repeat(2, 1fr);

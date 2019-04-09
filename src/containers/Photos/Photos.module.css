@@ -11,10 +11,12 @@
     width: 158px;
     height: 158px;
     position: relative;
+    background-color: #fff;
+    border-radius: 4px;
 }
 
 .Photo img {
-    border: 1px solid #ddd;
+    border: 1px solid #fff;
     border-radius: 4px;
     padding: 3px;
 }
