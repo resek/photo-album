@@ -34,7 +34,8 @@
 }
 
 .Breadcrumbs {
-    width: 250px;
+    width: 220px;
+    font-size: 14px;
     margin: 30px auto 0 auto;
 }
 

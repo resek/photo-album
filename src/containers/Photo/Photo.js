@@ -52,7 +52,7 @@ class Photo extends Component {
                             <p>Album: {album[0].title}</p>
                             <div>
                                 <p>User: {user[0].name}</p>
-                                <Link className={classes.Link} to={`/${id}/albums/${albumId}`}><button>See album</button></Link>
+                                <Link to={`/${id}/albums/${albumId}`}><button>See album</button></Link>
                             </div>                            
                         </div> 
                     : null}                    
