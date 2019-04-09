@@ -7,33 +7,35 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Navbar from "../../components/Navbar/Navbar";
 import classes from './Albums.module.css';
+import SideDrawer from "../../components/SideDrawer/SideDrawer";
 
 class Albums extends Component {
 
     componentDidMount() {
+        const store = this.props.Store;
         window.scrollTo(0, 0);      
-        if(!this.props.Store.albums.length) {
-            this.props.Store.getAlbums();
+        if(!store.albums.length) {
+            store.getAlbums();
         } 
-        if (!this.props.Store.photos.length) {           
-            this.props.Store.getPhotos();
+        if (!store.photos.length) {           
+            store.getPhotos();
         }        
     }
     
     render() {
 
-        let albums;
+        let showAlbums;
         const userId = this.props.match.params.id;
+        const {albums, photos} = this.props.Store;
 
-        if(this.props.Store.albums.length && this.props.Store.photos.length) {
-
+        if(albums.length && photos.length) {
             
-            const userAlbums = this.props.Store.albums.filter(album => 
+            const userAlbums = albums.filter(album => 
                 album.userId === Number(userId));                
             
-            albums = userAlbums.map(album => {                
+            showAlbums = userAlbums.map(album => {                
                 
-                const filteredArr = this.props.Store.photos.filter(photo => 
+                const filteredArr = photos.filter(photo => 
                     photo.albumId === album.id).slice(0, 3);
                 
                 return (
@@ -55,14 +57,17 @@ class Albums extends Component {
             });
         }  
         else {
-            albums = (<Spinner />)
+            showAlbums = (<Spinner />)
         }
     
         return (
             <>            
             <Navbar />
-            <div className={classes.Breadcrumbs}><Link to="/">Home</Link> / Albums user {userId}</div>
-            {albums}
+            <SideDrawer userId={userId}/>
+            <div className={classes.Breadcrumbs}>
+                <Link to="/">Home</Link> / Albums - User {userId}
+            </div>
+            {showAlbums}
             </>              
         )
     }    

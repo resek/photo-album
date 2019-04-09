@@ -4,14 +4,15 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import classes from './Navbar.module.css';
+import { observer, inject } from "mobx-react";
 
-const Navbar = () => {
+const Navbar = ({Store}) => {
 
     return (
         <div className={classes.Navbar}>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton color="inherit" onClick={() => alert("icon")}>
+                    <IconButton color="inherit" onClick={Store.toggleDrawer}>
                         <MenuIcon />   
                     </IconButton>
                     <h3>Photo album app</h3>
@@ -21,4 +22,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar;
+export default inject('Store')(observer(Navbar));

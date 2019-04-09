@@ -6,28 +6,31 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Navbar from "../../components/Navbar/Navbar";
+import SideDrawer from "../../components/SideDrawer/SideDrawer";
 import classes from './Users.module.css';
 
 class Users extends Component { 
 
     componentDidMount() {
-        if(!this.props.Store.users.length) {
-            this.props.Store.getUsers();
+        const store = this.props.Store;
+        if(!store.users.length) {
+            store.getUsers();
         } 
-        if(!this.props.Store.photos.length) {
-            this.props.Store.getPhotos();
+        if(!store.photos.length) {
+            store.getPhotos();
         }  
     }
 
     render() {
 
-        let users;
+        let showUsers;
+        const {users, photos} = this.props.Store;
 
-        if(this.props.Store.users.length && this.props.Store.photos.length) {
+        if(users.length && photos.length) {
             
-            users = this.props.Store.users.map(user => {
+            showUsers = users.map(user => {
                 
-                const filteredArr = this.props.Store.photos.filter(photo => 
+                const filteredArr = photos.filter(photo => 
                     photo.albumId === user.id * 10).slice(0,1);
                 
                 return (
@@ -48,13 +51,14 @@ class Users extends Component {
             });
         } 
         else {
-            users = (<Spinner />)
+            showUsers = (<Spinner />)
         }       
     
         return (
             <>
             <Navbar />
-            {users}
+            <SideDrawer />
+            {showUsers}
             </>              
         )
     }      

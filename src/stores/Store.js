@@ -8,6 +8,7 @@ class Store {
     users = [];
     photos = [];
     albums = [];
+    drawerOpen = false;
 
     getUsers = () => {
         axios.get(`https://jsonplaceholder.typicode.com/users`)
@@ -45,15 +46,21 @@ class Store {
                 console.log(error);
             });
     }
+
+    toggleDrawer = () => {
+        this.drawerOpen = !this.drawerOpen;
+    };
 }
 
 decorate(Store, {
     users: observable,
     albums: observable,
     photos: observable,
+    drawerOpen: observable,
     getUsers: action,
     getAlbums: action,
     getPhotos: action,
+    toggleDrawer: action
 });
 
 export default new Store();

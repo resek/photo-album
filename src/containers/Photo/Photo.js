@@ -11,43 +11,40 @@ class Photo extends Component {
     }
 
     componentDidMount() {
-        if(!this.props.Store.photos.length) {
-            this.props.Store.getPhotos();
+        const store = this.props.Store;
+        if(!store.photos.length) {
+            store.getPhotos();
         }
-        if(!this.props.Store.users.length) {
-            this.props.Store.getUsers();
+        if(!store.users.length) {
+            store.getUsers();
         }
-        if(!this.props.Store.albums.length) {
-            this.props.Store.getAlbums();
+        if(!store.albums.length) {
+            store.getAlbums();
         }        
     }
 
     toggleOverlay = () => {
-        this.setState({overlay: !this.state.overlay})
+        this.setState({overlay: !this.state.overlay});
     }
 
     render() {
 
-        let showPhoto;        
+        let showPhoto;
+        const {users, albums, photos} = this.props.Store;
         
-        if(this.props.Store.photos.length && this.props.Store.users.length && this.props.Store.albums.length) {
+        if(photos.length && users.length && albums.length) {
 
             const {id, albumId, photoId}  = this.props.match.params;
 
-            const album = this.props.Store.albums.filter(album =>
-                album.id === Number(albumId));
-
-            const user = this.props.Store.users.filter(user =>
-                user.id === Number(id));
-
-            const photos = this.props.Store.photos.filter(photo => 
-                photo.id === Number(photoId));        
+            const album = albums.filter(album => album.id === Number(albumId));
+            const user = users.filter(user => user.id === Number(id));
+            const photosArr = photos.filter(photo => photo.id === Number(photoId));        
             
-            showPhoto = photos.map(photo => (
+            showPhoto = photosArr.map(photo => (
                 
                 <div onClick={this.toggleOverlay} key={photo.id} className={classes.Photo}>    
                     
-                    <img src={photo.url} alt="" />
+                    <img src={photo.url} alt=""/>
                     
                     {this.state.overlay ? 
                         <div className={classes.Overlay}>
@@ -58,8 +55,7 @@ class Photo extends Component {
                                 <Link className={classes.Link} to={`/${id}/albums/${albumId}`}><button>See album</button></Link>
                             </div>                            
                         </div> 
-                    : null}
-                    
+                    : null}                    
                 </div> 
             ));  
         } 
