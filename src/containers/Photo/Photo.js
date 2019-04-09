@@ -48,10 +48,10 @@ class Photo extends Component {
                     
                     {this.state.overlay ? 
                         <div className={classes.Overlay}>
-                            <p>Title: {photo.title}</p>
-                            <p>Album: {album[0].title}</p>
+                            <p>Title: {photo.title.substring(0,65)}</p>
+                            <p>Album: {album[0].title.substring(0,65)}</p>
                             <div>
-                                <p>User: {user[0].name}</p>
+                                <p>User: {user[0].name.substring(0,22)}</p>
                                 <Link to={`/${id}/albums/${albumId}`}><button>See album</button></Link>
                             </div>                            
                         </div> 

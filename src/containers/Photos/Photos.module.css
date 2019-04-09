@@ -1,7 +1,7 @@
 .Photos {
     margin: 30px auto;
     width: 692px;
-    max-width: 90%;
+    max-width: 94%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
@@ -38,7 +38,7 @@
     color: white;
     font-size: 88%;
     margin: 0;
-    padding: 0 4px;
+    padding: 4px 4px;
 }
 
 .Spinner {
@@ -64,7 +64,19 @@
 
 @media (max-width: 600px) {
     .Photos {
-        width: 336px;
+        width: 276px;
         grid-template-columns: repeat(2, 1fr);
+        grid-gap: 15px;
+    }
+    .Photo {
+        width: 128px;
+        height: 128px;
+    }
+    .Photo img {
+        width: 120px;
+        height: 120px;
+    }
+    .Title {
+        width: 120px;
     }
 }

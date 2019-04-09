@@ -11,12 +11,12 @@ const SideDrawer = inject("Store")(observer((props) => {
     const store = props.Store;
 
     return (
-        <div>
-            <Drawer open={store.drawerOpen} onClose={store.toggleDrawer}>
+        <>
+            <Drawer transitionDuration={300} open={store.drawerOpen} onClose={store.toggleDrawer}>
                 <List>
                     <Link to="/" onClick={store.toggleDrawer}>
                         <ListItem button >                        
-                                <ListItemText primary="Home" />                       
+                                <ListItemText primary="Home - all users" />                       
                         </ListItem>
                     </Link>
                     {props.userId ?
@@ -35,7 +35,7 @@ const SideDrawer = inject("Store")(observer((props) => {
                     : null}
                 </List>
             </Drawer> 
-        </div>
+        </>
     )
 }));
 
